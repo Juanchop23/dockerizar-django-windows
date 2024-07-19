@@ -39,14 +39,13 @@ Ejecutar la vista predeterminada del proyecto en localhost:8000/admin, que tambi
 3. Crear un entorno virtual de Python: ``python -m venv venv`` -> El -m es para no tener que invocar al intérprete de Python.  
 4. Activar el entorno virtual
 
-**Activar entorno virtual sin necesidad de Docker**
+**Activar entorno virtual sin necesidad de Docker**  
 ``venv\Scripts\activate``
 
 ``pip install django``
 
-``django-admin startproject dockerizar-django .``
+``django-admin startproject dockerizar-django .``  
 
-# Ejecutar proyecto en la web
 ``python manage.py runserver``
 
 # Paquetes
