@@ -1,8 +1,12 @@
-# Tener en cuenta
-El proyecto se encuentra hecho para ser ejecutado en máquinas con Windows
+## Software necesario
+-Windows
+-Docker Desktop
+-Python instalado
+
+Este código no se va a ejecutar nunca si no se tiene cualquiera de las anteriores.
 
 # Comandos para ejecutar el proyecto
-
+- [Introducción](#introducción)
 ``python -m venv venv`` -> El -m es para no tener que invocar al intérprete de Python
 
 Activar entorno virtual
