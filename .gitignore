@@ -1,0 +1,9 @@
+# Archivos de instalación de paquetes
+*.pyc
+*.pyo
+__pycache__/
+venv/
+env/
+
+#Omitir subir variables de entorno si es el caso
+.env
