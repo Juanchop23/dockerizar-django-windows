@@ -1,26 +1,26 @@
-# Use Python 3.12.2 image based on Debian Bullseye in its slim variant as the base image
+# Usa la imagen de Python 3.12.2 basada en Debian Bullseye en su variante slim como la imagen base
 FROM python:3.12.2-slim-bullseye
 
-# Set an environment variable to unbuffer Python output, aiding in logging and debugging
+# Variable de entorno para no almacenar en buffer la salida de Python
 ENV PYTHONBUFFERED=1
 
-# Define an environment variable for the web service's port, commonly used in cloud services
+# Variable de entorno para el puerto web
 ENV PORT 8080
 
-# Set the working directory within the container to /app for any subsequent commands
+# Establecer el directorio de trabajo dentro del contenedor a /app para los comandos subsecuentes
 WORKDIR /app
 
-# Copy the entire current directory contents into the container at /app
+# Copia el contenido completo del directorio actual en la máquina host al directorio /app del contenedor
 COPY . /app/
 
-# Upgrade pip to ensure we have the latest version for installing dependencies
+# Actualizar pip
 RUN pip install --upgrade pip
 
-# Install dependencies from the requirements.txt file to ensure our Python environment is ready
+# Instala las dependencias desde el archivo requirements.txt para preparar el entorno de Python
 RUN pip install -r requirements.txt
 
-# Set the command to run our web service using Gunicorn, binding it to 0.0.0.0 and the PORT environment variable
+# Establece el comando para ejecutar nuestro servicio web usando Gunicorn, enlazándolo a 0.0.0.0 y al puerto definido en la variable de entorno PORT
 CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:"${PORT}"
 
-# Inform Docker that the container listens on the specified network port at runtime
+# Informa a Docker que el contenedor escucha en el puerto de red especificado en tiempo de ejecución
 EXPOSE ${PORT}

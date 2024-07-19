@@ -1,12 +1,16 @@
-## Software necesario
--Windows
--Docker Desktop
--Python instalado
+# Tabla de contenido
+- [Software necesario](#Necesario)  
+- [Cómo se construyó](#Construcción) 
+- [Posibles errores](#introducción) Explicación de qué hacer en caso de errores montando la imagen.
+
+# Necesario
+1. Windows  
+2. Docker Desktop  
+3. Python instalado en el equipo  
 
 Este código no se va a ejecutar nunca si no se tiene cualquiera de las anteriores.
 
 # Comandos para ejecutar el proyecto
-- [Introducción](#introducción)
 ``python -m venv venv`` -> El -m es para no tener que invocar al intérprete de Python
 
 Activar entorno virtual
