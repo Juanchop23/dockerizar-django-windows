@@ -1,8 +1,8 @@
 # Tabla de contenido
 - [Software necesario](#Necesario)  
 - [Cómo se construyó](#Crear) 
-- [Posibles errores](#introducción) 
 - [Explicación paquetes](#Paquetes) 
+- [Posibles errores](#Errores) 
 
 # Necesario
 1. Windows  
@@ -23,9 +23,15 @@ El archivo Dockerfile contiene el paso a paso que sigue Docker para crear una im
 -**Copiar y pegar en la terminal donde se tiene el directorio**  
 ``docker run -p 8000:8080 --env PIPELINE=production --env SECRET_KEY=your_value --env DB_NAME=. --env DB_USER_NM=. --env DB_USER_PW=. --env DB_IP=0.0.0.0 --env DB_PORT=5432 django-docker``
 
-Ejecutar la vista predeterminada del proyecto en localhost:8000/admin
+Estas variables de entorno son solicitadas por el archivo **__init__.py** que está dentro de la carpeta settings. Allí hay una función encargada de alternar entre entorno de desarrollo local y entorno de producción. De momento no se toca nada relacionado con producción porque no se tiene una aplicación construída.
 
-Si en localhost:8000 saca un letrero de Not Found, el proyecto se está ejecutando correctamente.
+El archivo **local.py** contiene la configuración por defecto de DJango para trabajar en entorno local.
+
+El archivo **production.py** contiene el llamamiento a la función que espera las variables de entorno junto con sus argumentos para ejecutar el proyecto.
+
+Si en localhost:8000 saca un letrero de Not Found, el proyecto se está ejecutando correctamente. Por defecto, Docker usa la ruta 0.0.0.0:8000 como se indicó en el Dockerfile pero se debe cambiar.
+
+Ejecutar la vista predeterminada del proyecto en localhost:8000/admin, que también viene por defecto en el archivo **urls.py** del proyecto de DJango.
 
 # Crear
 1. Crear un directorio.  
@@ -33,7 +39,7 @@ Si en localhost:8000 saca un letrero de Not Found, el proyecto se está ejecutan
 3. Crear un entorno virtual de Python: ``python -m venv venv`` -> El -m es para no tener que invocar al intérprete de Python.  
 4. Activar el entorno virtual
 
-Activar entorno virtual
+**Activar entorno virtual sin necesidad de Docker**
 ``venv\Scripts\activate``
 
 ``pip install django``
@@ -62,7 +68,6 @@ Todos los hosts son validos. Es decir, todo el mundo que tenga acceso a internet
 
 Se tienen dos archivos de settings.py, uno para desarrollar y hacer debug en entorno local y otro para sacar a producción.
 
-# Se necesita
--Saber cómo conectarse a una BD remotamente.
--
-
+# Errores
+**Name**  
+-Si al momento de ejecutar el contenedor de Docker en la consola que estemos usando aparece un mensaje relacionado con que no se puede encontrar un nombre, se debe pausar la ejecución del contenedor de Docker, eliminar este, eliminar la imagen, cambiar la línea del Dockerfile que causa el problema por la correcta y volver a construir y ejecutar la imagen.

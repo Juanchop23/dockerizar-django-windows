@@ -1,6 +1,5 @@
-#Aquí determinamos si vamos a usar las
-#configuraciones de entorno local o de
-#producción
+#Aquí determinamos si vamos a usar las configuraciones de entorno 
+#local o de producción
 
 import os
 
